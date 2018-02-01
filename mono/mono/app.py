@@ -2,12 +2,13 @@ from flask import Flask
 from flask_classy import FlaskView
 from mono.model import db
 from mono.config.default import DefaultConfig
+import pymysql
 
 
 def create_app():
 
     app = Flask(__name__)
-
+    pymysql.install_as_MySQLdb()
     app.config.from_object(DefaultConfig)
     # 统一注册所有的api接口
     api_register(app)
