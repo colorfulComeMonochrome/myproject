@@ -1,6 +1,5 @@
-from mono.model import db
+from mono.model import db, MyModel
 import time
-
 """
 评论
     id
@@ -14,7 +13,7 @@ import time
 """
 
 
-class Discuss(db.Model):
+class Discuss(db.Model, MyModel):
     d_id = db.Column(db.Integer, primary_key=True)
     u_id = db.Column(db.Integer)
     m_id = db.Column(db.Integer)

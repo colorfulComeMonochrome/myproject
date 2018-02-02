@@ -1,5 +1,4 @@
-from mono.model import db
-
+from mono.model import db, MyModel
 
 """
     用户
@@ -14,7 +13,7 @@ from mono.model import db
 """
 
 
-class User(db.Model):
+class User(db.Model, MyModel):
     u_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), nullable=False, unique=True)
     password = db.Column(db.String(32), nullable=False)
