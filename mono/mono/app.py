@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_classy import FlaskView
-from mono.model import db
+from mono.model import db, JsonEncoder
 from mono.config.default import DefaultConfig
 import pymysql
 
@@ -13,7 +13,7 @@ def create_app():
     # 统一注册所有的api接口
     api_register(app)
     # Index.register(app)
-
+    app.json_encoder = JsonEncoder
     # 注册db
     db.init_app(app)
     return app
@@ -22,6 +22,7 @@ def create_app():
 # 统一注册所有的api接口,以后注册app就不需要写xxx.register(app)  只需要在函数中导入对应的类即可
 def api_register(app):
     from mono.api.index import Index
+    from mono.api.user import UserView
 
     """以下是注册第一个api(Index)时写的注释
     
