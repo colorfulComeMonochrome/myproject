@@ -23,6 +23,7 @@ def create_app():
 def api_register(app):
     from mono.api.index import Index
     from mono.api.user import UserView
+    from mono.api.movie import MovieView
 
     """以下是注册第一个api(Index)时写的注释
     

@@ -19,7 +19,15 @@ class Movie(db.Model, MyModel):
 
 
 
+    @classmethod
+    def create_data(cls):
 
+        for i in range(30):
+            m = Movie()
+            m.movie_name = '虚拟电影%d' % i
+            m.movie_desc = '导演：%s' % '某大佬'
+            m.url = 'www.mymovie%d.xyz' % i
+            m.save()
 
 
 
