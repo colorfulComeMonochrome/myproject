@@ -3,6 +3,7 @@ from flask import request, json, jsonify, session
 from mono.model.user import User
 from mono.api import ApiView
 from mono.tools.code import Code
+from hashlib import md5
 
 """
 API:
@@ -34,7 +35,7 @@ class UserView(ApiView):
         user.save()
         session['username'] = user.username
         # print(session)
-        return jsonify(user)
+        return user
 
     @route('/login/', methods=['POST'])
     def login(self):
@@ -47,18 +48,24 @@ class UserView(ApiView):
             return Code.user_not_exist, info
         if not u.password == password:
             return Code.password_wrong, info
-        session['username'] = username
+        # session['username'] = username
+        # 使用md5来对进行session加密
+        hash_object = md5()
+        hash_object.update(u.username.encode('utf-8'))
+        u.token = hash_object.hexdigest()
+
         return u
 
     # get
     @route('/logout/')
-    def logout(self, username):
-        # username = request.values['username']
-        if session[username]:
+    def logout(self):
+        username = request.values['username']
+        # print("================================", username)
+        if session.get(username):
             session.pop('username')
             return Code.success, "ok"
         else:
-            return Code.never_logged_in
+            return Code.never_logged_in, "ok"
 
     # 修改信息
     def alter(self):
