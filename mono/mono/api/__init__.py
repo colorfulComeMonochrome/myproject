@@ -2,8 +2,16 @@ import functools
 
 from flask import json, request, Response, make_response, jsonify
 from flask_classy import FlaskView
+from mono.tools.code import Code
 
 class ApiView(FlaskView):
+
+    """
+        继承自FlaskView的apiview 实现：
+        在API中直接返回对象，或直接返回数据，
+        由自定义的jsonify方法来将response加工成标准格式
+
+    """
     @classmethod
     def make_proxy_method(cls, name):
         """Creates a proxy function that can be used by Flasks routing. The
@@ -42,11 +50,13 @@ class ApiView(FlaskView):
             response = view(**request.view_args)
             ##################################################################
             if not isinstance(response, Response):
-                if isinstance(response, tuple):
-                    if len(response) > 1:
-                        response = jsonify(data=response)
+                if isinstance(response, tuple) and len(response) > 1:
+                    info, from_data = response
+                    response = jsonify(info_msg=info.name, info_code=info.value, data=from_data)
                 else:
-                    response = jsonify(data=response)
+                    response = jsonify(info_msg=Code.success.name,
+                                       info_code=Code.success.value,
+                                        data=response)
                 # response = make_response(response)
             ##################################################################
             after_view_name = "after_" + name

@@ -6,6 +6,15 @@ db = SQLAlchemy()
 
 class MyModel(object):
 
+
+    # 获取类内部所有属性
+    def get_attrs(self):
+        attrs = []
+        for i in vars(self).items():
+            if not i[0].startswith("_"):
+                attrs.append(i)
+        return attrs
+
     def put(self):
         db.session.add(self)
 

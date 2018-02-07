@@ -23,9 +23,10 @@ class User(db.Model, MyModel):
     collect = db.Column(db.Text)
 
 
-
-
-
+    @classmethod
+    def get(cls, username):
+        user = User.query.filter_by(username=username).first()
+        return user
 
 
 
