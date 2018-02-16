@@ -15,7 +15,10 @@ class Code(Enum):
     # 未登录
     never_logged_in = 303
 
+    # test_session_get
+    get_session_failed = 304
 
-
+    #
+    token_not_found = 305
 
 

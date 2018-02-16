@@ -23,6 +23,7 @@ class UserView(ApiView):
 
     @route('/register/', methods=['POST'])
     def u_register(self):
+        # 在参数传入注册函数时，前端应验证账号是否存在
         # 参数在request.values里
         info = request.values
 
@@ -48,13 +49,32 @@ class UserView(ApiView):
             return Code.user_not_exist, info
         if not u.password == password:
             return Code.password_wrong, info
+
         # session['username'] = username
+        # print(session['username'])
+        # print(session.items())
+
         # 使用md5来对进行session加密
         hash_object = md5()
         hash_object.update(u.username.encode('utf-8'))
         u.token = hash_object.hexdigest()
 
+        session['u_token'] = u.token
+        print(session.items())
         return u
+
+    # 测试能否正常get session的api
+    @route('/getsession/')
+    def get_session(self, u_token):
+        print("-------------------")
+        # print(session.get('username'))
+        print(request.values['u_token'])
+        if request.values.get('u_token'):
+            return Code.token_not_found, "failed"
+        # if request.values['u_token'] == 0:
+        #     return Code.success, "OK"
+        # return Code.get_session_failed, "OK"
+        return Code.success, "OK"
 
     # get
     @route('/logout/')

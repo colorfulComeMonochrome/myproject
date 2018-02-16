@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mono@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mono">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="axf"/>
+    <schema id="4" parent="1" name="AXFproject"/>
+    <schema id="5" parent="1" name="FlaskProject1"/>
+    <schema id="6" parent="1" name="HelloDjango01"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="Login"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="shuoshuo456"/>
+    <schema id="12" parent="1" name="sys"/>
+    <schema id="13" parent="1" name="testdata"/>
+    <schema id="14" parent="1" name="tigereye"/>
+    <schema id="15" parent="1" name="university"/>
+    <table id="16" parent="2" name="discuss"/>
+    <table id="17" parent="2" name="movie"/>
+    <table id="18" parent="2" name="user"/>
+    <column id="19" parent="16" name="d_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="16" name="u_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="21" parent="16" name="m_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="22" parent="16" name="create_time">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="16" name="status">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="24" parent="16" name="reply_d_id">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="25" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>d_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="17" name="m_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="17" name="movie_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="17" name="movie_desc">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="29" parent="17" name="url">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="30" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>m_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="18" name="u_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="18" name="username">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="18" name="password">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="18" name="neckname">
+      <Position>4</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="18" name="email">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="36" parent="18" name="phone_num">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="18" name="collect">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="38" parent="18" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>u_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="40" parent="18" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
